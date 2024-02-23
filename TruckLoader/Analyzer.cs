@@ -15,10 +15,6 @@ namespace TruckLoader
 
         public List<Pallet> pallets { get; set; }
 
-        public List<SpaceLocation[,]> spaceLocations { get; set; }
-
-        public List<double> volumeUnusedForEachTruck { get; set; }
-
         public List<Result> results { get; set; }
 
         public Analyzer(List<Truck> trucks, List<Pallet> pallets, bool orientazionePallet)

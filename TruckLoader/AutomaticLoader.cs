@@ -15,9 +15,9 @@ namespace TruckLoader
         public Truck truck { get; set; }
         public SpaceLocation[,] loadingMatrix { get; set; }
 
-        public int rows;
+        public int rows { get; set; }
 
-        public int columns;
+        public int columns { get; set; }
         
         public AutomaticLoader(Truck truck, List<Pallet> pallets, bool orientazionePallet)
         {
@@ -70,7 +70,13 @@ namespace TruckLoader
         // Metodo per caricare i pallet in maniera ottimizzata nel cassone
         public SpaceLocation[,] Load()
         {
-            //Intanto ordino i pallets in base al loro ordine di consegna in mofo decrescente e poi in base al fatto che siano sovrapponibili
+            /*
+             * Intanto ordino i pallets in base a:
+             * - loro ordine di consegna in modo decrescente 
+             * - al fatto che siano sovrapponibili
+             * - all'altezza
+             */
+
             var orderedPallets = pallets
                 .OrderByDescending(p => p.unloadingOrder)
                 .ThenByDescending(p => p.stackedPalletAbovePermitted)
@@ -159,6 +165,7 @@ namespace TruckLoader
             }
             else
                 Console.WriteLine("Caricamento: " + truck.name + ": tutti i pallet sono stati inseriti correttamente.");
+
             return loadingMatrix;
         }
 

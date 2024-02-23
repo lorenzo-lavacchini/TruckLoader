@@ -47,6 +47,7 @@ Analyzer an = new Analyzer(trucks, carico, orientazionePallet);
 
 List<Result> results = an.Analyze();
 
+
 foreach (Result result in results)
 {
     Console.WriteLine("------------------------------------------------------------------");
